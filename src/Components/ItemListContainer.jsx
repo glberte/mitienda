@@ -1,7 +1,8 @@
-const ItemListContainer = () => {
+const ItemListContainer = (props) => {
+    console.log(props);
     return(
         <>
-        {<h2>Bienvenido a mi futura tienda online!</h2>}
+        <h2>Bienvenido! {props.grettins} </h2>
         </>
     )
 }
