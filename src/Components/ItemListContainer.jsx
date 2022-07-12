@@ -1,3 +1,4 @@
+import PokeAPIExample from "../ejercicioClases/PokeAPIExample";
 import ItemCount from "./itemCount";
 
 const ItemListContainer = (props) => {
@@ -6,6 +7,7 @@ const ItemListContainer = (props) => {
         <>
         <h2>Bienvenido! {props.grettins} </h2> 
         <ItemCount/>
+        <PokeAPIExample/>
     
 
         
