@@ -2,14 +2,17 @@
 import './App.css';
 import NavBar from './Components/Nav';
 import ItemListContainer from './Components/ItemListContainer';
+import ItemCount from './Components/itemCount';
 
 
 function App() {
+
   return (
     <div className="App">
       <NavBar/>
-      <ItemListContainer grettins="a mi futura tienda online!"/>
-      <ItemListContainer grettins="proximamente se veran los producos!"/>
+  
+      <ItemListContainer grettins="proximamente publicaremos los productos!"/>
+     
     </div>
   );
 }
