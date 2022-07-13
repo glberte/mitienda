@@ -2,7 +2,7 @@
 import './App.css';
 import NavBar from './Components/Nav';
 import ItemListContainer from './Components/ItemListContainer';
-import ItemCount from './Components/itemCount';
+import ItemCount from './ejercicioClases/itemCount2';
 
 
 function App() {
