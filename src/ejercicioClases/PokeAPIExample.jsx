@@ -1,25 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-// const PokeAPIExample = () => {
-//     const [pokemon, setPokemon] = useState({});
-//     //const [test, setTest] = useState ("test");
-//     const url= "https://pokeapi.co/api/v2/pokemon/ditto";
-//     useEffect(()=>{
-//         fetch(url)
-//         .then((res)=> console.log(res))
-//         .then((res)=> setPokemon(res) );
-
-//     }),[];
-//     return (
-//         <>
-//         <div>
-
-//         </div>
-//         </>
-//     )
-// }
-
 
 const PokeAPIExample = () => {
     const [pokemon, setPokemon] = useState({});

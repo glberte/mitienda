@@ -29,7 +29,7 @@ function Contador () {
     <>
     <div id="Contador">
     <Card className="text-center">
-    <Card.Header>Producto 1</Card.Header>
+    {/* <Card.Header>Producto 1</Card.Header> */}
     <Card.Body>
         <Card.Title>{contador}</Card.Title>
 

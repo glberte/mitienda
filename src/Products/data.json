@@ -1,0 +1,42 @@
+[   
+    {
+      "id": 1,
+      "imgUrl": "",
+      "title": "Comida 1",
+      "description": "Alimento 1",
+      "price": "100",
+      "stock": 10
+    },
+    {
+      "id": 2,
+      "imgUrl": "",
+      "title": "Comida 2",
+      "description": "Alimento 2",
+      "price": "100",
+      "stock": 10
+    },
+    {
+      "id": 3,
+      "imgUrl": "",
+      "title": "Comida 3",
+      "description": "Alimento 3",
+      "price": "100",
+      "stock": 10
+    },
+    {
+      "id": 4,
+      "imgUrl": "",
+      "title": "Comida 4",
+      "description": "Alimento 4",
+      "price": "100",
+      "stock": 10
+    },
+    {
+      "id": 5,
+      "imgUrl": "",
+      "title": "Comida 5",
+      "description": "Alimento 5",
+      "price": "100",
+      "stock": 10
+    }
+  ]
