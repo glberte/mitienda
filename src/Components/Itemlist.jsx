@@ -11,6 +11,7 @@ const Items = () => {
             price: 1000,
             stock: 20,
             img: "../img/comida2.jpeg",
+            category: "aliments"
           },
           {
             id: 2,
@@ -19,14 +20,16 @@ const Items = () => {
             price: 1500,
             stock: 20,
             img: "./img/comida2.jpeg",
+            category: "aliments"
           },
           {
             id: 3,
-            name: "Comida 3",
-            description: "Alimento Balanceado 3",
+            name: "Juguete 1",
+            description: "Pelota 1",
             price: 3000,
             stock: 20,
             img: "../img/comida2.jpeg",
+            category: "toys"
           }
         ]);
 

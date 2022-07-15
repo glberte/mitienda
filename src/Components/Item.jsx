@@ -1,4 +1,6 @@
 import Contador from "./ItemCount";
+import {Link} from 'react-router-dom';
+import { Button } from "react-bootstrap";
 
 const Item = (props) => {
 
@@ -10,6 +12,7 @@ const Item = (props) => {
       <h3>$ {props.price}</h3>
       <h4>Stock {props.stock} ud</h4>
       <h3>{props.description} </h3>
+      <Link to={"/detail"}>{<button className="btn btn-outline-dark">Detalles</button>} </Link>
     </div>
     </>
   );

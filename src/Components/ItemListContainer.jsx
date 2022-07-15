@@ -3,10 +3,14 @@ import ItemCount2 from "../ejercicioClases/itemCount2";
 import Items from "./Itemlist";
 import { useState } from "react";
 import { useEffect } from "react";
+import {useParams} from "react-router-dom";
+import createUtilityClassName from "react-bootstrap/esm/createUtilityClasses";
 
 
 
 const ItemListContainer = (props) => {
+    const name = useParams();
+    console.log(name);
     const [items, setItems] = useState([]);
     const promise = new Promise((resolve)=> {
         setTimeout(()=> resolve(items), 5000);
@@ -21,7 +25,8 @@ const ItemListContainer = (props) => {
     //     )
     // }
     useEffect(()=> {
-        promise.then((res)=> setItems(items));
+        promise.then((res)=> 
+            setItems(items));
     }, []);
 
     return(
