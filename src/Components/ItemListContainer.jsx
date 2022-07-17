@@ -10,42 +10,47 @@ import createUtilityClassName from "react-bootstrap/esm/createUtilityClasses";
 
 const ItemListContainer = (props) => {
     const name = useParams();
-    console.log(name);
+    // console.log(name);
     const [items, setItems] = useState([]);
-    const promise = new Promise((resolve)=> {
-        setTimeout(()=> resolve(items), 5000);
+
+    const promise = new Promise((resolve, reject)=> {
+        setTimeout(()=>{
+            const resp = {items};
+            resolve ( resp );}, 2000);
     });
 
-    // const ProductFilters = () => {
-    //     return(
-    //         <>
-    //         <div className="buttons">
-    //             <button className="btn btn-outline-dark">Comida</button>
-    //             </div></>
-    //     )
-    // }
-    useEffect(()=> {
-        promise.then((res)=> 
-            setItems(items));
-    }, []);
+    promise.then( ({items}) => {
+        return(
+            <div>
+                {/* <Items/> */}
+            </div>
+        )
+        
+        
+    });
+     return(
+         <>
+     <div>
+         <h2>Bienvenido! {props.grettins} </h2> 
+     </div>
+     <div>
+         <Items items={items}/>
+     </div> 
 
-    return(
-        <>
-        <div>
-            <h2>Bienvenido! {props.grettins} </h2> 
-        </div>
-        <div>
-            <Items items={items}/>
-        </div> 
-        
-     
-        
-     
-        <PokeAPIExample/>
-
-        
-        </>
-    )
+     {/* <PokeAPIExample/> */}        
+     </>
+)
 }
 
 export default ItemListContainer;
+
+
+
+//  const ProductFilters = () => {
+    //      return(
+    //          <>
+    //          <div className="buttons">
+    //              <button className="btn btn-outline-dark">Comida</button>
+    //              </div></>
+    //      )
+    //  }

@@ -40,7 +40,7 @@ const Items = () => {
                 return(
                     <>
                     <Item key={item.id} name={item.name} price={item.price} stock={item.stock}/>
-                    <Contador/>
+                    
                     </>
                 )
             }
