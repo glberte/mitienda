@@ -44,7 +44,7 @@ const ItemListContainer = () => {
                 resolve(productsDB)
             }, 2000);
         })
-        promise.then((respuesta)=>{
+        promise.then((productsDB)=>{
             setItems(productsDB)
         }).catch(
              (err)=> console.log(err)
