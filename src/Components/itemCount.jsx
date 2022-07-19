@@ -2,11 +2,11 @@ import { useState, useEffect } from "react"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 
-function Contador () {
+const Contador = (props)=> {
   const [contador, setContador] = useState(1);
   const [bool, setBool] = useState( true );
   let cantidad = contador;
-  let stock = 4;
+  let stock = props.stock;
   
 
   useEffect(()=>{
