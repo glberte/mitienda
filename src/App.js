@@ -20,7 +20,7 @@ function App() {
       <Route path='/cart' element={<Item/>} />
       <Route 
         path="*" 
-        element={<div> Error 404</div>}/>
+        element={<div> No se encuentra el detalle del Producto</div>}/>
     </Routes>
 
     <div className="App">

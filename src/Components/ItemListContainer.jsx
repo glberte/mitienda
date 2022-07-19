@@ -11,7 +11,7 @@ const productsDB = [{
          description: "Alimento Balanceado 1",
          price: 1000,
          stock: 20,
-         img: "../img/comida2.jpeg",
+         img: "/img/comida2.jpeg",
          category: "aliments"
        },
        {
@@ -20,7 +20,7 @@ const productsDB = [{
          description: "Alimento Balanceado 2",
          price: 1500,
          stock: 20,
-         img: "./img/comida2.jpeg",
+         img: "./img/comida3.jpeg",
          category: "aliments"
        },
        {
@@ -29,7 +29,7 @@ const productsDB = [{
          description: "Pelota 1",
          price: 3000,
          stock: 20,
-         img: "../img/comida2.jpeg",
+         img: "img/comida2.jpeg",
          category: "toys"
        }
      ];
