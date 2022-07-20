@@ -29,7 +29,16 @@ const productsDB = [{
          description: "aqui tiene mucha descripcion Pelota 1",
          price: 3000,
          stock: 20,
-         img: "img/comida2.jpeg",
+         img: "img/juguete1.jpeg",
+         category: "toys"
+       },
+       {
+         id: 4,
+         name: "Juguete 2",
+         description: "aqui tiene mucha descripcion Dispense Alimentos",
+         price: 4000,
+         stock: 10,
+         img: "img/juguete2.jpeg",
          category: "toys"
        }
      ];
