@@ -8,25 +8,25 @@ import ItemsList from "./Itemlist";
 const productsDB = [{
          id: 1,
          name: "Comida 1",
-         description: "Alimento Balanceado 1",
+         description: "aqui tiene mucha descripcion Alimento Balanceado 1",
          price: 1000,
-         stock: 20,
-         img: "/img/comida2.jpeg",
+         stock: 10,
+         img: "img/comida2.jpeg",
          category: "aliments"
        },
        {
          id: 2,
          name: "Comida 2",
-         description: "Alimento Balanceado 2",
+         description: "aqui tiene mucha descripcion Alimento Balanceado 2",
          price: 1500,
-         stock: 20,
-         img: "./img/comida3.jpeg",
+         stock: 15,
+         img: "img/comida3.jpeg",
          category: "aliments"
        },
        {
          id: 3,
          name: "Juguete 1",
-         description: "Pelota 1",
+         description: "aqui tiene mucha descripcion Pelota 1",
          price: 3000,
          stock: 20,
          img: "img/comida2.jpeg",

@@ -2,20 +2,24 @@
 import './App.css';
 import NavBar from './Components/Nav';
 import ItemListContainer from './Components/ItemListContainer';
-import ItemCount from './ejercicioClases/itemCount2';
 import { BrowserRouter, Route, Routes, Link } from'react-router-dom';
 import Item from './Components/Item';
+import Formulario from './ejercicioClases/Formulario';
+import Intercambialidad from './ejercicioClases/Intercambialidad';
+
 
 
 function App() {
 
   return (
     <>
+    {/* <Intercambialidad countType="input" /> */}
     <BrowserRouter>
     <NavBar/>
     <Routes>
       <Route index element={<ItemListContainer/>} />
       <Route path='/productos' element={"/"} />
+      <Route path='/Contacto' element={<Formulario/>} />
       <Route path='/category/:name' element={<ItemListContainer/>} />
       <Route path='/cart' element={<Item/>} />
       <Route 
