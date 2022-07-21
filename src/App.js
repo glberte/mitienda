@@ -17,27 +17,22 @@ function App() {
     {/* <Intercambialidad countType="input" /> */}
     <BrowserRouter>
     <NavBar/>
+    <Link to={"category/aliments"}>Alimentos</Link>
+    <Link to={"category/toys"}>Juguetes</Link>
     <Routes>
       <Route index element={<ItemListContainer/>} />
       <Route path='/productos' element={"/"} />
       <Route path='/Contacto' element={<Formulario/>} />
-      <Route path='/category/:name' element={<ItemListContainer/>} />
+      <Route path="/category/:name" element={<ItemListContainer/>} />
       <Route path='item/:id' element={<ItemDetailContainer/>} />
       <Route path='/cart' element={<Item/>} />
-      <Route 
-        path="*" 
-        element={<div> No se encuentra el detalle del Producto</div>}/>
+      <Route path="*"  element={<div> No se encuentra el detalle del Producto</div>}/>
     </Routes>
 
     <div className="App">
-      {/* <NavBar/> */}
-  
-      {/* <ItemListContainer grettins="proximamente publicaremos los productos!"/> */}
-      
-     
+      {/* <ItemListContainer grettins="proximamente publicaremos los productos!"/> */}      
     </div>
-    
-    
+  
     </BrowserRouter>
     </>
   );

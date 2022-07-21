@@ -2,6 +2,9 @@ import Contador from "./ItemCount";
 import {Link} from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import { Card } from "react-bootstrap";
+import Row from 'react-bootstrap/Row';
+
+
 
 const Item = (props) => {
   let stock = props.stock
@@ -9,8 +12,10 @@ const Item = (props) => {
 
   return(
     <>
-    <div>
-    <Card style={{ width: '18rem' }}>
+    <Row xs={1} md={2} className="g-4"></Row>
+    
+    <div className="row">
+    <Card border="warning" style={{ width: '20rem' }}>
       
       <Card.Img variant="top" src={props.img} />
         
