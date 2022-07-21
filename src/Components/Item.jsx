@@ -22,7 +22,7 @@ const Item = (props) => {
                <h5> cantidad disponible {props.stock}</h5> 
              </Card.Text>
            
-            <Link to={`/detail/${props.id}`}>{
+            <Link to={`/item/${props.id}`}>{
              <button className="btn btn-outline-dark">Detalles</button>} 
             </Link>
           

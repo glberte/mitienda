@@ -2,26 +2,27 @@
 import { useEffect } from "react";
 import {useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
+import detail from "./details.json";
+import { useState } from "react";
 
 
 const ItemDetailContainer = () => {
+    const [item, setItems] = useState({});
     const {id} = useParams();
-    console.log(id);
-    const item = {name: "name"};
+    console.log(item);
+    const promise = new Promise ((res, rej)=> {
+        setTimeout(()=>{
+            res(detail)
+        }, 2000)
+    });
 
-    // useEffect(()=> {
-    //       let promise = new Promise ((resolve, reject) =>{
-    //           setTimeout(()=> {
-    //               resolve(item)
-    //           }, 2000);
-    //       })
-    //       promise.then((item)=>{
-    //           setItems(item)
-    //       }).catch(
-    //            (err)=> console.log(err)
-    //         );
-    //   },[]);
-
+    useEffect( ()=> {
+        promise.then((response)=>{
+            const foundItem = response.filter((item) => item.id == parseInt(id))
+            setItems(foundItem[0]);
+        })
+    });
+    
     return(
         <>
             <ItemDetail item={item} />
@@ -29,33 +30,18 @@ const ItemDetailContainer = () => {
     )
 }
 
-// const ItemDetailContainer = () => {
-    
-//         const [item, setItems] = useState([]);
-//        // const id = props.key;
-//        // const item = props.item;
-        
-//         useEffect(()=> {
-//             let promise = new Promise ((resolve, reject) =>{
-//                 setTimeout(()=> {
-//                     resolve(item)
-//                 }, 2000);
-//             })
-//             promise.then((item)=>{
-//                 setItems(item)
-//             }).catch(
-//                  (err)=> console.log(err)
-//               );
-//         },[]);
-    
-//         return (
-//             <div>
-//                 <ItemDetail item={item}/>
-//             </div>
-//         )
-//     }
-    
-    
-
 export default ItemDetailContainer;
 
+
+// useEffect(()=> {
+//   let promise = new Promise ((resolve, reject) =>{
+//       setTimeout(()=> {
+//           resolve(detail)
+//       }, 2000);
+//   })
+//   promise.then((detail)=>{
+//       setItems(detail)
+//   }).catch(
+//        (err)=> console.log(err)
+//     );
+// },[]);

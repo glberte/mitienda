@@ -22,7 +22,7 @@ function App() {
       <Route path='/productos' element={"/"} />
       <Route path='/Contacto' element={<Formulario/>} />
       <Route path='/category/:name' element={<ItemListContainer/>} />
-      <Route path='item/:id' element={ItemDetailContainer} />
+      <Route path='item/:id' element={<ItemDetailContainer/>} />
       <Route path='/cart' element={<Item/>} />
       <Route 
         path="*" 
