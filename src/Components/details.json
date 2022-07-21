@@ -4,7 +4,7 @@
     "description": "aqui tiene mucha descripcion Alimento Balanceado 1",
     "price": 1000,
     "stock": 10,
-    "img": "img/comida2.jpeg",
+    "img": "../img/comida2.jpeg",
     "category": "aliments"
   },
   {
@@ -13,7 +13,7 @@
     "description": "aqui tiene mucha descripcion Alimento Balanceado 2",
     "price": 1500,
     "stock": 15,
-    "img": "img/comida3.jpeg",
+    "img": "../img/comida3.jpeg",
     "category": "aliments"
   },
   {
@@ -22,7 +22,7 @@
     "description": "aqui tiene mucha descripcion Pelota 1",
     "price": 3000,
     "stock": 20,
-    "img": "img/juguete1.jpeg",
+    "img": "../img/juguete1.jpeg",
     "category": "toys"
   },
   {
@@ -31,7 +31,8 @@
     "description": "aqui tiene mucha descripcion Dispense Alimentos",
     "price": 4000,
     "stock": 10,
-    "img": "img/juguete2.jpeg",
+    "img": "../img/juguete2.jpeg",
     "category": "toys"
+
   }
 ]

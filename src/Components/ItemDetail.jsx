@@ -13,15 +13,14 @@ import Button from 'react-bootstrap/Button';
       <div>
         
         <Card className="text-center">
-      <Card.Header><h2>{item.name}</h2></Card.Header>
+      <Card.Header><h2>Detalles del producto</h2></Card.Header>
       <Card.Body>
-        <Card.Title>{item.img}</Card.Title>
-        <Card.Img variant="top" src={item.img} />
+        <Card.Title> <h3>{item.name}</h3> </Card.Title>
+        <Card.Img variant="left" src={item.img} />
         <Card.Text>
-          <h3>
+          <h4>
             {item.description}.
-          
-          </h3> 
+          </h4> 
         </Card.Text>
         <h5> cantidad disponible: {item.stock} </h5>
         <h4>$ {item.price} </h4>
