@@ -7,18 +7,24 @@ import Item from './Components/Item';
 import Formulario from './ejercicioClases/Formulario';
 import Intercambialidad from './ejercicioClases/Intercambialidad';
 import ItemDetailContainer from './Components/ItemDetailContainer';
+import CartProvider from './Context/CartContext';
 
 
 
 function App() {
 
+  const amountItems = 0;
+
   return (
     <>
     {/* <Intercambialidad countType="input" /> */}
+    <CartProvider>
     <BrowserRouter>
-    <NavBar/>
-    <Link to={"category/aliments"}>Alimentos</Link>
-    <Link to={"category/toys"}>Juguetes</Link>
+      <NavBar amountItems={amountItems}/>
+
+      <Link to={"category/aliments"}>Alimentos</Link>
+      <Link to={"/category/toys"}>Juguetes</Link>
+
     <Routes>
       <Route index element={<ItemListContainer/>} />
       <Route path='/productos' element={"/"} />
@@ -28,12 +34,9 @@ function App() {
       <Route path='/cart' element={<Item/>} />
       <Route path="*"  element={<div> No se encuentra el detalle del Producto</div>}/>
     </Routes>
-
-    <div className="App">
-      {/* <ItemListContainer grettins="proximamente publicaremos los productos!"/> */}      
-    </div>
   
     </BrowserRouter>
+    </CartProvider>
     </>
   );
 }

@@ -22,13 +22,13 @@ const Item = (props) => {
         <Card.Body>
           <Card.Title> <h2>{props.name}</h2> </Card.Title>
              <Card.Text>
-               {/* <h2> {props.description} </h2>  */}
                <h4>$ {props.price} </h4> 
                <h5> cantidad disponible {props.stock}</h5> 
              </Card.Text>
            
             <Link to={`/item/${props.id}`}>{
-             <button className="btn btn-outline-dark">Detalles</button>} 
+             <button className="btn btn-outline-dark">Detalles</button>
+             } 
             </Link>
           
             <Contador key={props.id} stock={props.stock}/>

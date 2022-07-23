@@ -3,48 +3,53 @@ import { useState, useEffect } from "react";
 import {useParams} from "react-router-dom";
 import createUtilityClassName from "react-bootstrap/esm/createUtilityClasses";
 import ItemsList from "./Itemlist";
+import productsDB from "./details.json"
 
+// cambio el listado de abajo por el json, despues usare una api
 // Listado de Productos, luego se traslada a una api
-const productsDB = [{
-         id: 1,
-         name: "Comida 1",
-         description: "aqui tiene mucha descripcion Alimento Balanceado 1",
-         price: 1000,
-         stock: 10,
-         img: "img/comida2.jpeg",
-         category: "aliments"
-       },
-       {
-         id: 2,
-         name: "Comida 2",
-         description: "aqui tiene mucha descripcion Alimento Balanceado 2",
-         price: 1500,
-         stock: 15,
-         img: "img/comida3.jpeg",
-         category: "aliments"
-       },
-       {
-         id: 3,
-         name: "Juguete 1",
-         description: "aqui tiene mucha descripcion Pelota 1",
-         price: 3000,
-         stock: 20,
-         img: "img/juguete1.jpeg",
-         category: "toys"
-       },
-       {
-         id: 4,
-         name: "Juguete 2",
-         description: "aqui tiene mucha descripcion Dispense Alimentos",
-         price: 4000,
-         stock: 10,
-         img: "img/juguete2.jpeg",
-         category: "toys"
-       }
-     ];
+// const productsDB = [{
+//          id: 1,
+//          name: "Comida 1",
+//          description: "aqui tiene mucha descripcion Alimento Balanceado 1",
+//          price: 1000,
+//          stock: 10,
+//          img: "img/comida2.jpeg",
+//          category: "aliments"
+//        },
+//        {
+//          id: 2,
+//          name: "Comida 2",
+//          description: "aqui tiene mucha descripcion Alimento Balanceado 2",
+//          price: 1500,
+//          stock: 15,
+//          img: "img/comida3.jpeg",
+//          category: "aliments"
+//        },
+//        {
+//          id: 3,
+//          name: "Juguete 1",
+//          description: "aqui tiene mucha descripcion Pelota 1",
+//          price: 3000,
+//          stock: 20,
+//          img: "img/juguete1.jpeg",
+//          category: "toys"
+//        },
+//        {
+//          id: 4,
+//          name: "Juguete 2",
+//          description: "aqui tiene mucha descripcion Dispense Alimentos",
+//          price: 4000,
+//          stock: 10,
+//          img: "img/juguete2.jpeg",
+//          category: "toys"
+//        }
+//      ];
 
 
 const ItemListContainer = () => {
+  const {params} = useParams();
+  console.log(params);
+  
     const [items, setItems] = useState([]);
     
     useEffect(()=> {
@@ -60,6 +65,7 @@ const ItemListContainer = () => {
           );
     },[]);
 
+    
     return(
         <>
         <ItemsList items={items}/>

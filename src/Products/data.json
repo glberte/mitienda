@@ -13,7 +13,8 @@
       "title": "Comida 2",
       "description": "Alimento 2",
       "price": "100",
-      "stock": 10
+      "stock": 10,
+      "category": "aliments"
     },
     {
       "id": 3,
@@ -21,7 +22,8 @@
       "title": "Comida 3",
       "description": "Alimento 3",
       "price": "100",
-      "stock": 10
+      "stock": 10,
+      "category": "aliments"
     },
     {
       "id": 4,
@@ -29,7 +31,8 @@
       "title": "Comida 4",
       "description": "Alimento 4",
       "price": "100",
-      "stock": 10
+      "stock": 10,
+      "category": "toys"
     },
     {
       "id": 5,
@@ -37,6 +40,7 @@
       "title": "Comida 5",
       "description": "Alimento 5",
       "price": "100",
-      "stock": 10
+      "stock": 10,
+      "category": "toys"
     }
   ]

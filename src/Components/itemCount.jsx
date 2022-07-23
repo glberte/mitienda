@@ -31,13 +31,20 @@ const Contador = (props)=> {
     <Card className="text-center">
     {/* <Card.Header>Producto 1</Card.Header> */}
     <Card.Body>
-        <Card.Title>{contador}</Card.Title>
+        <Card.Title>
+          <Button variant="outline-primary" onClick={sumar}>+</Button>
+        </Card.Title>
 
-        <Button variant="outline-primary" onClick={sumar}>+</Button>
-        <Button variant="outline-danger" onClick={restar}>-</Button>
-        <Button variant="outline-danger" onClick={quitar}> Borrar</Button>
+
+          <h4> </h4>
+          {contador} 
+          <h4> </h4>
+          <Button variant="outline-danger" onClick={restar}>-</Button>
+          <h4> </h4>
+        
     </Card.Body>
         <Button variant="outline-success" onClick={comprar}>Enviar al carrito</Button>
+        <Button variant="outline-danger" onClick={quitar}> Borrar</Button>
     </Card>
 
     </div>
