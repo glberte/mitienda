@@ -22,8 +22,12 @@ function App() {
     <BrowserRouter>
       <NavBar amountItems={amountItems}/>
 
-      <Link to={"category/aliments"}>Alimentos</Link>
-      <Link to={"/category/toys"}>Juguetes</Link>
+      <Link to={"category/aliments"}>
+      <button className="btn btn-outline-dark">Alimentos</button>
+      </Link>
+      <Link to={"/category/toys"}>
+      <button className="btn btn-outline-dark">Juguetes</button>
+      </Link>
 
     <Routes>
       <Route index element={<ItemListContainer/>} />
@@ -32,6 +36,7 @@ function App() {
       <Route path="/category/:name" element={<ItemListContainer/>} />
       <Route path='item/:id' element={<ItemDetailContainer/>} />
       <Route path='/cart' element={<Item/>} />
+      
       <Route path="*"  element={<div> No se encuentra el detalle del Producto</div>}/>
     </Routes>
   
