@@ -47,10 +47,16 @@ import productsDB from "./details.json"
 
 
 const ItemListContainer = () => {
-  const {params} = useParams();
-  console.log(params);
+  const {name} = useParams();
+  console.log(name);
   
     const [items, setItems] = useState([]);
+    const Loading = ()=>{
+      return(
+        <>
+        </>
+      )
+    }
     
     useEffect(()=> {
         let promise = new Promise ((resolve, reject) =>{
@@ -59,13 +65,19 @@ const ItemListContainer = () => {
             }, 2000);
         })
         promise.then((productsDB)=>{
+          if (name) {
+            setItems(productsDB.filter((product) => product.category == name));
+          } else{
             setItems(productsDB)
+
+          }
         }).catch(
              (err)=> console.log(err)
           );
-    },[]);
+    },[name]);
 
-    
+    // const foundItem = response.filter((item) => item.category == name
+    //             setItems(foundItem[0]);
     return(
         <>
         <ItemsList items={items}/>

@@ -9,7 +9,7 @@ import { useState } from "react";
 const ItemDetailContainer = () => {
     const [item, setItems] = useState({});
     const {id} = useParams();
-    console.log(item);
+    console.log("ver "+id);
         const promise = new Promise ((res, rej)=> {
             setTimeout(()=>{
                 res(detail)
