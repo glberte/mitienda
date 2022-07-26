@@ -27,7 +27,7 @@ const Item = (props) => {
              </Card.Text>
            
             <Link to={`/item/${props.id}`}>{
-             <button className="btn btn-outline-dark">Detalles</button>
+             <button variant="outline-dark" className="btn btn-outline-dark">Detalles</button>
              } 
             </Link>
           

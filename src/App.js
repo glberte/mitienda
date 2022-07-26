@@ -35,7 +35,7 @@ function App() {
       <Route path='/Contacto' element={<Formulario/>} />
       <Route path="/category/:name" element={<ItemListContainer/>} />
       <Route path='item/:id' element={<ItemDetailContainer/>} />
-      <Route path='/cart' element={<Item/>} />
+      <Route path='/cart' element={"Carrito"} />
       
       <Route path="*"  element={<div> No se encuentra el detalle del Producto</div>}/>
     </Routes>

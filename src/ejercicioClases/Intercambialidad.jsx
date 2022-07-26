@@ -3,6 +3,7 @@ import React from "react";
 const InputCount = ({onAdd, stock}) => {
     <>
     <input onChange={onAdd}/>
+    <h1> {stock} </h1>
     </>
 };
 const ButtonCount = ({onAdd, stock}) => {
@@ -12,10 +13,9 @@ const ButtonCount = ({onAdd, stock}) => {
     </>
 };
 
-
-const Intercambialidad = ()=>{
+const Intercambialidad = (countType)=>{
     const onAdd = ()=> console.log("this is triggerin onAdd");
-    const Count = countType == "button" ? ButtonCount : InputCount ;
+    const Count = countType == "button" ? ButtonCount : InputCount;
     
     return<Count onAdd={onAdd} stock={4} />;
     
