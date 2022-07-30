@@ -1,14 +1,13 @@
 import { useState } from "react";
+import { CartContext } from "../Context/CartContext";
 
 const CartWiget = ({amountItems}) => {
-    //  const[amount, setAmount] = useState(0);
+    // const {cartItems} = useContext(CartContext);
 
     return (
         <div>
             <a href="" className="btn btn-outline-dark">
                 <i className=" fa fa-shopping-cart"></i> Carrito <span>
-
-                {/* {amount} */}
                 {amountItems}
                 </span>
             </a>

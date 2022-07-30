@@ -10,6 +10,7 @@ import ItemDetailContainer from './Components/ItemDetailContainer';
 import CartProvider from './Context/CartContext';
 import BarraFiltros from './Components/Filter';
 import React, { useState } from 'react';
+import Cart from './Components/Cart';
 
 // const CartContext = React.createContext("");
 // console.log('CartContext: ', CartContext);
@@ -20,22 +21,21 @@ function App() {
   return (
     <>
     {/* <Intercambialidad countType="input" /> */}
-    {/* <CartProvider> */}
-    <BrowserRouter>
-      <NavBar amountItems={amountItems}/>
-    <Routes>
-      <Route index element={<ItemListContainer/>} />
-      <Route path='/productos' element={"/"} />
-      <Route path='/Contacto' element={<Formulario/>} />
-      <Route path="/category/:name" element={<ItemListContainer/>} />
-      <Route path='item/:id' element={<ItemDetailContainer setAmountItems={setAmountItems}/>} />
-      <Route path='/cart' element={"Carrito"} />
-      
-      <Route path="*"  element={<div> No se encuentra el detalle del Producto</div>}/>
-    </Routes>
-  
-    </BrowserRouter>
-    {/* </CartProvider> */}
+     <CartProvider>
+        <BrowserRouter>
+            <NavBar amountItems={amountItems}/>
+          <Routes>
+            <Route index element={<ItemListContainer/>} />
+            <Route path='/productos' element={"/"} />
+            <Route path='/Contacto' element={<Formulario/>} />
+            <Route path="/category/:name" element={<ItemListContainer/>} />
+            <Route path='item/:id' element={<ItemDetailContainer setAmountItems={setAmountItems}/>} />
+            <Route path='/cart' element={<Cart/>} />
+
+            <Route path="*"  element={<div> No se encuentra el detalle del Producto</div>}/>
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </>
   );
 }

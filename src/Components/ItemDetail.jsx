@@ -8,18 +8,25 @@ import { CartContext } from "../Context/CartContext";
 import ItemCount2 from "../ejercicioClases/itemCount2";
 
 
-
  const ItemDetail = ({item, setAmountItems}) => {
+  // const [cartItems, setCartItems] = useState([]);
+  const {setCartItems}= useContext(CartContext);
   // const context = useContext(CartContext);
-  // console.log(context);
+  //   console.log(context);
+
    const [amount, setAmount] = useState(0);
    const {id, name, description, price, stock, img, category} = item;
    const onAdd = (amount) => {
      setAmount(amount);
      
-     setAmountItems((prevState) => {
-      return parseInt(prevState) + 1;
-     });
+     setCartItems((prevState)=> {
+      console.log(prevState);
+      return [...prevState, item]});
+     
+     
+      // setAmountItems((prevState) => {
+      //  return parseInt(prevState) + 1;
+      // });
     };
      
     
