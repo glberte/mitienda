@@ -6,7 +6,7 @@ import detail from "./details.json";
 import { useState } from "react";
 
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({setAmountItems}) => {
     const [item, setItems] = useState({});
     const {id} = useParams();
     // console.log("ver "+id);
@@ -25,7 +25,7 @@ const ItemDetailContainer = () => {
     
     return(
         <>
-            <ItemDetail item={item} />
+            <ItemDetail setAmountItems={setAmountItems} item={item} />
         </>
     )
 }

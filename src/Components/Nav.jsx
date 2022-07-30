@@ -1,7 +1,8 @@
 import CartWiget from "./CartWidget";
 import { Link } from "react-router-dom";
+import BarraFiltros from "./Filter";
 
-const NavBar = () => {
+const NavBar = ({amountItems}) => {
   return (
     <div>
       <nav class="navbar navbar-expand-lg bg-light">
@@ -31,11 +32,14 @@ const NavBar = () => {
 
       </ul>
       <Link to={"/cart"}>
-        <CartWiget/>
+        <CartWiget amountItems = {amountItems}/>
       </Link>
     </div>
   </div>
+  <div>
+  </div>
 </nav>
+    <BarraFiltros/>
 
     </div>
   )

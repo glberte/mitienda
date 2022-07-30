@@ -3,13 +3,13 @@ import {Link} from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
+import { CartContext } from "../Context/CartContext";
 
 
 
 const Item = (props) => {
   let stock = props.stock
  
-
   return(
     <>
     <Row xs={1} md={2} className="g-4"></Row>
@@ -31,7 +31,7 @@ const Item = (props) => {
              } 
             </Link>
           
-            <Contador key={props.id} stock={props.stock}/>
+            {/* <Contador key={props.id} stock={props.stock}/> */}
         </Card.Body>
     </Card>
     </div>

@@ -29,9 +29,9 @@ const ItemCount2 = ({stock = 1, initial= 1, onAdd}) => {
         <div>
             <button onClick={()=> onAdd(count)}
             className="btn btn-icon btn-dark" 
-            type="button"
-
-            > Comprar </button>
+            type="button"> 
+            Comprar 
+            </button>
         </div>       
     </>
     )

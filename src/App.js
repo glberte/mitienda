@@ -8,40 +8,34 @@ import Formulario from './ejercicioClases/Formulario';
 import Intercambialidad from './ejercicioClases/Intercambialidad';
 import ItemDetailContainer from './Components/ItemDetailContainer';
 import CartProvider from './Context/CartContext';
+import BarraFiltros from './Components/Filter';
+import React, { useState } from 'react';
 
-
+// const CartContext = React.createContext("");
+// console.log('CartContext: ', CartContext);
 
 function App() {
-
-  const amountItems = 0;
+  const[ amountItems, setAmountItems] = useState(0);
 
   return (
     <>
     {/* <Intercambialidad countType="input" /> */}
-    <CartProvider>
+    {/* <CartProvider> */}
     <BrowserRouter>
       <NavBar amountItems={amountItems}/>
-
-      <Link to={"category/aliments"}>
-      <button className="btn btn-outline-dark">Alimentos</button>
-      </Link>
-      <Link to={"/category/toys"}>
-      <button className="btn btn-outline-dark">Juguetes</button>
-      </Link>
-
     <Routes>
       <Route index element={<ItemListContainer/>} />
       <Route path='/productos' element={"/"} />
       <Route path='/Contacto' element={<Formulario/>} />
       <Route path="/category/:name" element={<ItemListContainer/>} />
-      <Route path='item/:id' element={<ItemDetailContainer/>} />
+      <Route path='item/:id' element={<ItemDetailContainer setAmountItems={setAmountItems}/>} />
       <Route path='/cart' element={"Carrito"} />
       
       <Route path="*"  element={<div> No se encuentra el detalle del Producto</div>}/>
     </Routes>
   
     </BrowserRouter>
-    </CartProvider>
+    {/* </CartProvider> */}
     </>
   );
 }

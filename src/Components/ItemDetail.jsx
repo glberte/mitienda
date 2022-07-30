@@ -9,15 +9,20 @@ import ItemCount2 from "../ejercicioClases/itemCount2";
 
 
 
- const ItemDetail = ({item}) => {
+ const ItemDetail = ({item, setAmountItems}) => {
   // const context = useContext(CartContext);
   // console.log(context);
    const [amount, setAmount] = useState(0);
    const {id, name, description, price, stock, img, category} = item;
    const onAdd = (amount) => {
      setAmount(amount);
-   
-    }
+     
+     setAmountItems((prevState) => {
+      return parseInt(prevState) + 1;
+     });
+    };
+     
+    
 
    return (
     <> 
@@ -42,10 +47,23 @@ import ItemCount2 from "../ejercicioClases/itemCount2";
               {amount == 0 ? (
                  <ItemCount2 stock={stock} initial={0} onAdd={onAdd} />
               ) : (
-              <h2> {amount} unidades de {item.name} se enviaron al carrito, seguir comprando? 
-              <Link to={"/cart"}>Finalizar compra </Link> o ver mas   
-              <Link to={"/"}> productos</Link>
-              </h2>
+                  <h3> {amount} unidades de {item.name} se envió al carrito, seguir comprando? 
+                   
+                     <div>
+                       <Link to={"/"}>
+                          <button className="btn btn-outline-primary"> Ver más Productos
+                          </button>
+                        </Link>
+
+                       <Link to={"/cart"}>
+                         <button className="btn btn-outline-dark">
+                         <i className=" fa fa-shopping-cart"> Finalizar Compra</i>
+                         </button>
+                       </Link>
+                     </div> 
+              
+                  </h3>
+
             
               )}
               

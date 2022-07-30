@@ -1,9 +1,10 @@
-import PokeAPIExample from "../ejercicioClases/PokeAPIExample";
+//import PokeAPIExample from "../ejercicioClases/PokeAPIExample";
 import { useState, useEffect } from "react";
 import {useParams} from "react-router-dom";
 import createUtilityClassName from "react-bootstrap/esm/createUtilityClasses";
 import ItemsList from "./Itemlist";
 import productsDB from "./details.json"
+import {getDoc, doc, getFirestore, collection, getDocs, query} from "firebase/firestore"
 
 // cambio el listado de abajo por el json, despues usare una api
 // Listado de Productos, luego se traslada a una api
@@ -48,7 +49,6 @@ import productsDB from "./details.json"
 
 const ItemListContainer = () => {
   const {name} = useParams();
-  console.log(name);
   
     const [items, setItems] = useState([]);
     const Loading = ()=>{
@@ -59,6 +59,30 @@ const ItemListContainer = () => {
     }
     
     useEffect(()=> {
+      // const db = getFirestore();
+      // const docRef = doc(db, "item", "2gQmkKlgswrM4gPUmSrj");
+      // getDoc(docRef).then((snapshot)=> {
+      //   const data = {id: snapshot.id, ...snapshot.data()};
+      // });
+
+      // const db= getFirestore();
+      // const itemsCollection = collection(db, "items");
+      // getDocs(itemsCollection).then((snapshot) => {
+      //   console.log(snapshot.docs.map(doc => {
+      //     const data ={id: doc.id, ...doc.data()}
+      //   }));
+        
+      // })
+
+      // const db = getFirestore();
+      // const itemsCollection = collection(db,"items");
+      // const filteredCollection = query(
+      //   itemsCollection, 
+      //   where("title", "==", "Comida1"),
+      //   where("price", "<", 1000)
+      //   );
+      //   getDocs(filteredCollection).then((snapshot)=> {})
+
         let promise = new Promise ((resolve, reject) =>{
             setTimeout(()=> {
                 resolve(productsDB)
@@ -69,15 +93,12 @@ const ItemListContainer = () => {
             setItems(productsDB.filter((product) => product.category == name));
           } else{
             setItems(productsDB)
-
           }
         }).catch(
              (err)=> console.log(err)
           );
     },[name]);
 
-    // const foundItem = response.filter((item) => item.category == name
-    //             setItems(foundItem[0]);
     return(
         <>
         <ItemsList items={items}/>
@@ -86,16 +107,4 @@ const ItemListContainer = () => {
     )
 }
 
-
  export default ItemListContainer;
-
-
-
-//  const ProductFilters = () => {
-    //      return(
-    //          <>
-    //          <div className="buttons">
-    //              <button className="btn btn-outline-dark">Comida</button>
-    //              </div></>
-    //      )
-    //  }
