@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+
 import { CartContext } from "../Context/CartContext";
 
-const CartWiget = ({amountItems}) => {
-    // const {cartItems} = useContext(CartContext);
+const CartWiget = () => {
+     const {cartItems} = useContext(CartContext);
 
     return (
         <div>
             <a href="" className="btn btn-outline-dark">
                 <i className=" fa fa-shopping-cart"></i> Carrito <span>
-                {amountItems}
+                {/* {amountItems} */}
+                {cartItems.length}
                 </span>
             </a>
         
