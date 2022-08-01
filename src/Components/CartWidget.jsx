@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-
 import { CartContext } from "../Context/CartContext";
 
 const CartWiget = () => {

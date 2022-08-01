@@ -7,7 +7,7 @@ import { CartContext } from "../Context/CartContext";
 
 const Cart = () => {
     const {cartItems} = useContext(CartContext);
-    
+    const {removeItem} = useContext(CartContext); 
     const [totalPrice, setTotalPrice] = useState(0);
     console.log(cartItems);
     useEffect(()=> {
@@ -37,14 +37,15 @@ const Cart = () => {
             Su carrito tiene:
         </h2> 
             {cartItems.map((item) => (
-                <>
+                <>.
                 <h3>{item.name}</h3>
-                <h3>{item.price}</h3>
+                <h3>{item. price}</h3>
+                <button onClick={removeItem}>Borrar</button>
                 </>
 
             ))} 
             <>
-            <h3>el total de la compra es ${totalPrice}</h3>
+            <h3>el total de la compra es $ {totalPrice}</h3>
             </>
 
 

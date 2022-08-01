@@ -48,8 +48,7 @@ import {getDoc, doc, getFirestore, collection, getDocs, query} from "firebase/fi
 
 
 const ItemListContainer = () => {
-  const {name} = useParams();
-  
+    const {name} = useParams();
     const [items, setItems] = useState([]);
     const Loading = ()=>{
       return(
