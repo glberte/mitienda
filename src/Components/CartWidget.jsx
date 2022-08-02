@@ -10,6 +10,7 @@ const CartWiget = () => {
                 <i className=" fa fa-shopping-cart"></i> Carrito <span>
                 {/* {amountItems} */}
                 {cartItems.length}
+                {}
                 </span>
             </a>
         
