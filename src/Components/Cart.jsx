@@ -36,8 +36,8 @@ const Cart = () => {
         <h2>
             Su carrito tiene:
         </h2> 
-            {cartItems.map((item) => (
-                <>.
+            {cartItems.map((item) => ( 
+                <>
                 <h3>{item.name}</h3>
                 <h3>{item. price}</h3>
                 <button onClick={removeItem}>Borrar</button>

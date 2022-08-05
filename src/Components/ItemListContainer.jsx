@@ -6,45 +6,6 @@ import ItemsList from "./Itemlist";
 import productsDB from "./details.json"
 import {getDoc, doc, getFirestore, collection, getDocs, query} from "firebase/firestore"
 
-// cambio el listado de abajo por el json, despues usare una api
-// Listado de Productos, luego se traslada a una api
-// const productsDB = [{
-//          id: 1,
-//          name: "Comida 1",
-//          description: "aqui tiene mucha descripcion Alimento Balanceado 1",
-//          price: 1000,
-//          stock: 10,
-//          img: "img/comida2.jpeg",
-//          category: "aliments"
-//        },
-//        {
-//          id: 2,
-//          name: "Comida 2",
-//          description: "aqui tiene mucha descripcion Alimento Balanceado 2",
-//          price: 1500,
-//          stock: 15,
-//          img: "img/comida3.jpeg",
-//          category: "aliments"
-//        },
-//        {
-//          id: 3,
-//          name: "Juguete 1",
-//          description: "aqui tiene mucha descripcion Pelota 1",
-//          price: 3000,
-//          stock: 20,
-//          img: "img/juguete1.jpeg",
-//          category: "toys"
-//        },
-//        {
-//          id: 4,
-//          name: "Juguete 2",
-//          description: "aqui tiene mucha descripcion Dispense Alimentos",
-//          price: 4000,
-//          stock: 10,
-//          img: "img/juguete2.jpeg",
-//          category: "toys"
-//        }
-//      ];
 
 
 const ItemListContainer = () => {
@@ -58,11 +19,13 @@ const ItemListContainer = () => {
     }
     
     useEffect(()=> {
-      // const db = getFirestore();
-      // const docRef = doc(db, "item", "2gQmkKlgswrM4gPUmSrj");
-      // getDoc(docRef).then((snapshot)=> {
-      //   const data = {id: snapshot.id, ...snapshot.data()};
-      // });
+      const db = getFirestore(); 
+      const docRef = doc(db, "items", "2gQmkKlgswrM4gPUmSrj");
+      getDoc(docRef).then((snapshot)=> {
+         const data = {id: snapshot.id, ...snapshot.data()};
+         console.log(snapshot.data());
+         setItems(snapshot.data())
+       });
 
       // const db= getFirestore();
       // const itemsCollection = collection(db, "items");

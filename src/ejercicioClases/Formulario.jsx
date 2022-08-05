@@ -5,21 +5,25 @@ const Formulario = () => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
         //e.stopPropatagation();
-        const input = document.getElementsByTagName("input");
-        console.log(input[0].value);
-
+        const inputs = document.getElementsByTagName("input");
+        console.log(inputs[0]);
+        const data = Array.from(inputs).map((input, index)=> input.value);
     };
+
     const onChangeHandler = (e) => {
         if(e.key == 'a' || e.key =='e')
         {e.preventDefault()};
         console.log(e);
     }
+    
 
     return (
         <>
         <h1 id="title"> Formulario </h1>
         <form onSubmit={onSubmitHandler}>
             <input onKeyDown={onChangeHandler} type="text" />
+            <input onKeyDown={onChangeHandler} type="email" />
+            <input onKeyDown={onChangeHandler} type="tel" />
             <button type="submit" >Enviar al Console Log</button>
         </form>
         </>
