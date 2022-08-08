@@ -19,13 +19,13 @@ const ItemListContainer = () => {
     }
     
     useEffect(()=> {
-      const db = getFirestore(); 
-      const docRef = doc(db, "items", "2gQmkKlgswrM4gPUmSrj");
-      getDoc(docRef).then((snapshot)=> {
-         const data = {id: snapshot.id, ...snapshot.data()};
-         console.log(snapshot.data());
-         setItems(snapshot.data())
-       });
+      // const db = getFirestore(); 
+      // const docRef = doc(db, "items", "2gQmkKlgswrM4gPUmSrj");
+      // getDoc(docRef).then((snapshot)=> {
+      //    const data = {id: snapshot.id, ...snapshot.data()};
+      //    console.log(snapshot.data());
+      //    setItems(snapshot.data())
+      //  },[]);
 
       // const db= getFirestore();
       // const itemsCollection = collection(db, "items");
