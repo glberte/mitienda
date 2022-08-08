@@ -19,22 +19,19 @@ const ItemListContainer = () => {
     }
     
     useEffect(()=> {
-      // const db = getFirestore(); 
-      // const docRef = doc(db, "items", "2gQmkKlgswrM4gPUmSrj");
-      // getDoc(docRef).then((snapshot)=> {
-      //    const data = {id: snapshot.id, ...snapshot.data()};
-      //    console.log(snapshot.data());
-      //    setItems(snapshot.data())
-      //  },[]);
-
-      // const db= getFirestore();
-      // const itemsCollection = collection(db, "items");
-      // getDocs(itemsCollection).then((snapshot) => {
-      //   console.log(snapshot.docs.map(doc => {
-      //     const data ={id: doc.id, ...doc.data()}
-      //   }));
+      
+      const db= getFirestore();
+      const itemsCollection = collection(db, 'items');
+      getDocs(itemsCollection)
+          .then((snapshot) => console.log(snapshot.docs)
+      );
+      
+      //  getDocs(itemsCollection).then((snapshot) => {
+      //    console.log(snapshot.docs.map(doc => {
+      //      const data ={id: doc.id, ...doc.data()}
+      //    }));
         
-      // })
+      // });
 
       // const db = getFirestore();
       // const itemsCollection = collection(db,"items");
@@ -45,21 +42,24 @@ const ItemListContainer = () => {
       //   );
       //   getDocs(filteredCollection).then((snapshot)=> {})
 
-        let promise = new Promise ((resolve, reject) =>{
-            setTimeout(()=> {
-                resolve(productsDB)
-            }, 2000);
-        })
-        promise.then((productsDB)=>{
-          if (name) {
-            setItems(productsDB.filter((product) => product.category == name));
-          } else{
-            setItems(productsDB)
-          }
-        }).catch(
-             (err)=> console.log(err)
-          );
-    },[name]);
+
+    //  let promise = new Promise ((resolve, reject) =>{
+    //      setTimeout(()=> {
+    //          resolve(productsDB)
+    //      }, 2000);
+    //  });
+
+    //      promise.then((productsDB)=>{
+    //        if (name) {
+    //          setItems(productsDB.filter((product) => product.category == name));
+    //        } else{
+    //          setItems(productsDB)
+    //        }
+    //      }).catch(
+    //           (err)=> console.log(err)
+    //        );
+
+   },[name]);
 
     return(
         <>
