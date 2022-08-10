@@ -4,12 +4,13 @@ import {useParams} from "react-router-dom";
 import createUtilityClassName from "react-bootstrap/esm/createUtilityClasses";
 import ItemsList from "./Itemlist";
 import productsDB from "./details.json"
-import {getDoc, doc, getFirestore, collection, getDocs, query} from "firebase/firestore"
+import {getDoc, doc, getFirestore, collection, getDocs, query, where} from "firebase/firestore"
 
 
 
 const ItemListContainer = () => {
     const {name} = useParams();
+    //const {categories} = useParams();
     const [items, setItems] = useState([]);
     // const Loading = ()=>{
     //   return(
@@ -18,16 +19,27 @@ const ItemListContainer = () => {
     //   )
     // }
     
-    const db = getFirestore();
-    const CollectionItems = collection(db, 'items');
-    
     useEffect(()=> {
-       getDocs(CollectionItems)
-       .then( res => {
-         const productList= res.docs.map((product)=>({id: product.id, ...product.data()}));
-         console.log(productList);
-         setItems(productList)
-       })
+      const db = getFirestore();
+      const CollectionItems = collection(db, 'items');
+      
+      if (name){
+            const CollectionFilter = query(CollectionItems, where('category','==', name))
+            getDocs(CollectionFilter)
+            .then(res => setItems(res.docs.map((product)=>({id: product.id, ...product.data()}))))
+                //setItems(productList)
+          } else {
+            getDocs(CollectionItems)
+            .then(res => setItems(res.docs.map((product)=>({id: product.id, ...product.data()}))))
+          
+        }
+
+        // getDocs(CollectionItems)
+        // .then( res => {
+        //   const productList= res.docs.map((product)=>({id: product.id, ...product.data()}));
+        //   console.log(productList);
+        //   setItems(productList)
+        // })
 
       // getDocs(CollectionItems)
       // .then( (productSnapshot) => {
