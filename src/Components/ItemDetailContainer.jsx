@@ -12,20 +12,21 @@ const ItemDetailContainer = ({setAmountItems}) => {
     const {id} = useParams();
     // console.log("ver "+id);
     
-        const promise = new Promise ((res, rej)=> {
-            setTimeout(()=>{
-                res(detail)
-            }, 100)
-        });
+        // const promise = new Promise ((res, rej)=> {
+        //     setTimeout(()=>{
+        //         res(detail)
+        //     }, 100)
+        // });
 
+        const db = getFirestore(); 
+        const docRef = doc(db, "items", id);
+        
         useEffect( ()=> {
-            const db = getFirestore(); 
-            const docRef = doc(db, "items", "2gQmkKlgswrM4gPUmSrj");
-                getDoc(docRef).then((snapshot)=> {
+            getDoc(docRef).then((snapshot)=> {
                 const data = {id: snapshot.id, ...snapshot.data()};
                 console.log(snapshot.data());
                 setItems(snapshot.data())
-              },[]);
+             },[]);
 
             // promise.then((response)=>{
             //     const foundItem = response.filter((item) => item.id == parseInt(id))
