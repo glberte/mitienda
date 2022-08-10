@@ -11,60 +11,59 @@ import {getDoc, doc, getFirestore, collection, getDocs, query} from "firebase/fi
 const ItemListContainer = () => {
     const {name} = useParams();
     const [items, setItems] = useState([]);
-    const Loading = ()=>{
-      return(
-        <>
-        </>
-      )
-    }
+    // const Loading = ()=>{
+    //   return(
+    //     <>
+    //     </>
+    //   )
+    // }
+    
+    const db = getFirestore();
+    const CollectionItems = collection(db, 'items');
     
     useEffect(()=> {
-      
-      const db= getFirestore();
-      const itemsCollection = collection(db, 'items');
-      getDocs(itemsCollection)
-          .then((snapshot) => console.log(snapshot.docs)
-      );
-      
-      //  getDocs(itemsCollection).then((snapshot) => {
-      //    console.log(snapshot.docs.map(doc => {
-      //      const data ={id: doc.id, ...doc.data()}
-      //    }));
-        
-      // });
+       getDocs(CollectionItems)
+       .then( res => {
+         const productList= res.docs.map((product)=>({id: product.id, ...product.data()}));
+         console.log(productList);
+         setItems(productList)
+       })
 
-      // const db = getFirestore();
-      // const itemsCollection = collection(db,"items");
-      // const filteredCollection = query(
-      //   itemsCollection, 
-      //   where("title", "==", "Comida1"),
-      //   where("price", "<", 1000)
-      //   );
-      //   getDocs(filteredCollection).then((snapshot)=> {})
+      // getDocs(CollectionItems)
+      // .then( (productSnapshot) => {
+      //   const productList = productSnapshot.docs.map((doc)=> {
+      //     let product = doc.data()
+      //     product.id = doc.id
+      //     return product
+      //   })
+      //   console.log(productList);
+      // })
+
+    },[name]);
 
 
-    //  let promise = new Promise ((resolve, reject) =>{
-    //      setTimeout(()=> {
-    //          resolve(productsDB)
-    //      }, 2000);
-    //  });
+  //   {   
+  //     let promise = new Promise ((resolve, reject) =>{
+  //         setTimeout(()=> {
+  //             resolve(productsDB)
+  //         }, 2000);
+  //     });
 
-    //      promise.then((productsDB)=>{
-    //        if (name) {
-    //          setItems(productsDB.filter((product) => product.category == name));
-    //        } else{
-    //          setItems(productsDB)
-    //        }
-    //      }).catch(
-    //           (err)=> console.log(err)
-    //        );
+  //         promise.then((productsDB)=>{
+  //           if (name) {
+  //             setItems(productsDB.filter((product) => product.category == name));
+  //           } else{
+  //             setItems(productsDB)
+  //           }
+  //         }).catch(
+  //              (err)=> console.log(err)
+  //           );
 
-   },[name]);
+  //  },[name]);
 
     return(
         <>
         <ItemsList items={items}/>
-         {/* <PokeAPIExample/> */}
         </>
     )
 }

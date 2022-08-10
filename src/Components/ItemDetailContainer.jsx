@@ -11,6 +11,7 @@ const ItemDetailContainer = ({setAmountItems}) => {
     const [item, setItems] = useState({});
     const {id} = useParams();
     // console.log("ver "+id);
+    
         const promise = new Promise ((res, rej)=> {
             setTimeout(()=>{
                 res(detail)
