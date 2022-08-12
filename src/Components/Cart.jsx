@@ -6,8 +6,9 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 
 const Cart = () => {
-    const {cartItems} = useContext(CartContext);
-    const {removeItem} = useContext(CartContext); 
+
+
+    const {cartItems, removeItem, clearCart} = useContext(CartContext);
     const [totalPrice, setTotalPrice] = useState(0);
     console.log(cartItems);
     useEffect(()=> {
@@ -40,13 +41,17 @@ const Cart = () => {
                 <>
                 <h3>{item.name}</h3>
                 <h3>{item. price}</h3>
-                <button onClick={removeItem}>Borrar</button>
+                <button onClick={()=>removeItem(item.id)}>Borrar</button>
                 </>
 
             ))} 
             <>
             <h3>el total de la compra es $ {totalPrice}</h3>
             </>
+
+            <div>
+                {}
+            </div>
 
 
     </> )
