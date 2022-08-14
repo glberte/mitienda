@@ -1,79 +1,89 @@
 import { addDoc, getFirestore } from "firebase/firestore";
-import React, {createContext} from "react";
-import { useState } from "react";
+import React, {createContext, useState} from "react";
+import { createRoutesFromChildren } from "react-router-dom";
 
 export const CartContext = createContext();
 
+//export const useCartContext = () => useCartContext(CartContext);
+
 const CartProvider = ({children}) => {
-    const [cartItems, setCartItems] = useState([]);
+    // array donde guardamos los items
+     const [cartItems, setCartItems] = useState([]);
+     const [quantityProduct, setQuantityProducts] = useState(0);
+     
+     const addProduct = (item, quantity) => {
+		if (isInCart(item.id)) {
+			setCartItems(
+				cartItems.map((item) => {
+					return item.id === item.id
+						? { ...item, quantity: item.quantity + quantity }
+						: item;
+				}),
+			);
+		} else {
+			setCartItems([...cartItems, { ...item, quantity }]);
+		}
+	};
+
+
+
+
+     const isInCart = (item) => {
+         return cartItems.find ((e)=> e.item.id === item.id)
+     }
     
-    const isInCart = (item) => {
-        return cartItems.find ((e)=> e.item.id === item.id)
-    }
-    
-    const addItem = (item, quantity) => {
-        const newItem = isInCart(item);
-        if (newItem){
-            quantity= quantity + newItem.quantity;
-            setCartItems(cartItems.slice (cartItems.findIndex((e)=> e.item.id === item.id),1))
-        }
-        setCartItems([...cartItems, {item,quantity}])
-    }
+     console.log('newcarrito: ', cartItems);
 
 
-    // const addItem = (item) => {
-    //      const isInCart = cartItems.find(
-    //         (itemInCart) => itemInCart.id === item.id
-    //         );
-    //         if (isInCart){
-    //             setCartItems(
-    //                 cartItems.map((itemInCart) => {
-    //                     if(itemInCart.id === item.id){
-    //                         return {...isInCart, amount: isInCart.amount + 1};
-    //                     }else return itemInCart;
-    //                 })
-    //             );
-    //         }else{setCartItems([...cartItems, {...item, amount:1}])}
-    // }
-    
-    // const removeItem = (id) => {
-    //     (removeItem.filter(item => item.id !== id))
-    // };
-    const removeItem = (itemId) => {
-        return setCartItems(cartItems.filter (element => element.item.id !== itemId))
+     const removeItem = (codigo) => {
+         return setCartItems(cartItems.filter(e => e.item.codigo !== codigo))
+     }
+     const removeProduct = (id) => setCartItems (cartItems.filter(item => item.id !== id));
+
+    // Ver precio total
+    const PrecioTotal = () => {
+        return cartItems.reduce((prev, act) => prev + act.quantity * act.price, 0);
     }
 
+    const totalProducts = () =>
+		cartItems.reduce(
+			(acumulador, productoActual) => acumulador + productoActual.amount,
+			0,
+		);
 
-    const clearCart = product => {
-        let previousCart = [...cartItems]
-        setCartItems(previousCart.filter(i => i.item.id !== product.item.id))
-        
-        };
-
-    //const [amountItems, setAmountItems] = useState(0);
     // esto es para enviar la compra a Firebase
-    // const sendOrder = (() => {
-    //     const db = getFirestore();
-    //     const orderCollection = collection(db,'orders')
-    //     const order = {
-    //         item: cartItems,
-    //     };
-    //     addDoc(orderCollection, order).then((res)=> console.log(res.id)).catch((err)=> console.log('error', err));
-    // })
+     //const [amountItems, setAmountItems] = useState(0);
+     // const sendOrder = (() => {
+     //     const db = getFirestore();
+     //     const orderCollection = collection(db,'orders')
+     //     const order = {
+     //         item: cartItems,
+     //     };
+     //     addDoc(orderCollection, order).then((res)=> console.log(res.id)).catch((err)=> console.log('error', err));
+     // })
+ 
 
-
-
-
-
+    // Viciarmos el carrito
+     const clearCart = (item) => {
+         setCartItems([]);
+     }
     
-     return(
-         <>
-         <CartContext.Provider value={{cartItems, setCartItems, clearCart, addItem, removeItem}}>
-             {children},
-        
-         </CartContext.Provider>
-         </>
-     );
- };
+      return(
+          <>
+          <CartContext.Provider value={{cartItems, 
+            setCartItems, 
+            clearCart,
+            removeItem,
+            removeProduct,
+            addProduct,
+            PrecioTotal,
+            totalProducts
+            //addItem
+        }}>
+              {children}
+          </CartContext.Provider>
+          </>
+      );
+  };
 
- export default CartProvider;
+  export default CartProvider;

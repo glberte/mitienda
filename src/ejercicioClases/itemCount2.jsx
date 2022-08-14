@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 
 const ItemCount2 = ({stock = 1, initial= 1, onAdd}) => {
-    const [count, setCount] = useState(initial);
+    const [quantity, setCount] = useState(initial);
     const updateCount= (op) => {
-        if (op=== "-" && count>0) {
-            setCount(count - 1);
+        if (op=== "-" && quantity>0) {
+            setCount(quantity - 1);
         }
-        if (op=== "+" && count < stock) {
-            setCount(count + 1);
+        if (op=== "+" && quantity < stock) {
+            setCount(quantity + 1);
         }
     };
     const updateCountInput = (e) => {
@@ -21,16 +21,16 @@ const ItemCount2 = ({stock = 1, initial= 1, onAdd}) => {
     return (
     <>
      <div> 
-         <input onChange={(e)=> updateCountInput(e)} type="number" value={count} />
+         <input onChange={(e)=> updateCountInput(e)} type="number" value={quantity} />
          <button onClick={()=> updateCount("-")} className="btn btn-icon btn-warning" type="button"> - </button>
          <button onClick={()=> updateCount("+")} className="btn btn-icon btn-info" type="button"> + </button>
      </div>
 
         <div>
-            <button onClick={()=> onAdd(count)}
+            <button onClick={()=> onAdd(quantity)}
             className="btn btn-icon btn-dark" 
             type="button"> 
-            Comprar 
+            Enviar al Carrito 
             </button>
         </div>       
     </>

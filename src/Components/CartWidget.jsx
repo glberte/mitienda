@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "../Context/CartContext";
 
 const CartWiget = () => {
-     const {cartItems} = useContext(CartContext);
+     const {cartItems, totalProducts} = useContext(CartContext);
 
     return (
         <div>
@@ -10,7 +10,7 @@ const CartWiget = () => {
                 <i className=" fa fa-shopping-cart"></i> Carrito <span>
                 {/* {amountItems} */}
                 {cartItems.length}
-                {}
+                
                 </span>
             </a>
         

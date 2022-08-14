@@ -8,7 +8,8 @@ import { CartContext } from "../Context/CartContext";
 
 
 const Item = (props) => {
-  let stock = props.stock
+  let stock = props.stock;
+  //let quantity = props.quantity;
  
   return(
     <>

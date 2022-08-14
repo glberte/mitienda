@@ -10,13 +10,6 @@ import {getDoc, doc, getFirestore, collection, getDocs, query} from "firebase/fi
 const ItemDetailContainer = ({setAmountItems}) => {
     const [item, setItems] = useState({});
     const {id} = useParams();
-    // console.log("ver "+id);
-    
-        // const promise = new Promise ((res, rej)=> {
-        //     setTimeout(()=>{
-        //         res(detail)
-        //     }, 100)
-        // });
 
         const db = getFirestore(); 
         const docRef = doc(db, "items", id);
@@ -24,14 +17,10 @@ const ItemDetailContainer = ({setAmountItems}) => {
         useEffect( ()=> {
             getDoc(docRef).then((snapshot)=> {
                 const data = {id: snapshot.id, ...snapshot.data()};
-                console.log(snapshot.data());
+                //console.log(snapshot.data());
                 setItems(snapshot.data())
              },[]);
 
-            // promise.then((response)=>{
-            //     const foundItem = response.filter((item) => item.id == parseInt(id))
-            //     setItems(foundItem[0]);
-            // })
         });
     
     return(

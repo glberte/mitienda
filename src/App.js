@@ -12,17 +12,14 @@ import BarraFiltros from './Components/Filter';
 import React, { useState } from 'react';
 import Cart from './Components/Cart';
 
-// const CartContext = React.createContext("");
-// console.log('CartContext: ', CartContext);
-
 function App() {
   const[ amountItems, setAmountItems] = useState(0);
 
   return (
     <>
     {/* <Intercambialidad countType="input" /> */}
+    <BrowserRouter>
      <CartProvider>
-        <BrowserRouter>
             <NavBar amountItems={amountItems}/>
           <Routes>
             <Route index element={<ItemListContainer/>} />
@@ -34,8 +31,8 @@ function App() {
 
             <Route path="*"  element={<div> No se encuentra el detalle del Producto</div>}/>
           </Routes>
-        </BrowserRouter>
       </CartProvider>
+    </BrowserRouter>
     </>
   );
 }
