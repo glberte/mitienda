@@ -1,4 +1,4 @@
-import { addDoc, getFirestore } from "firebase/firestore";
+import { addDoc, getFirestore, collection } from "firebase/firestore";
 import React, {createContext, useState} from "react";
 import { createRoutesFromChildren } from "react-router-dom";
 
@@ -25,19 +25,16 @@ const CartProvider = ({children}) => {
 		}
 	};
 
-
-
-
-     const isInCart = (item) => {
-         return cartItems.find ((e)=> e.item.id === item.id)
-     }
+      const isInCart = (id) => {
+          return cartItems.find ((item)=> item.id === id)
+      }
     
      console.log('newcarrito: ', cartItems);
 
 
-     const removeUnItem = (codigo) => {
-         return setCartItems(cartItems.filter(e => e.item.codigo !== codigo))
-     }
+    //  const removeUnItem = (codigo) => {
+    //      return setCartItems(cartItems.filter(e => e.item.codigo !== codigo))
+    //  }
      const removeItem = (id) => setCartItems (cartItems.filter(item => item.id !== id));
 
     // Ver precio total
@@ -45,22 +42,24 @@ const CartProvider = ({children}) => {
         return cartItems.reduce((prev, act) => prev + act.quantity * act.price, 0);
     }
 
-    const totalProducts = () =>
+    const ProductosTotalWidget = () =>
 		cartItems.reduce(
-			(acumulador, productoActual) => acumulador + productoActual.amount,
+			(acumulador, productoActual) => acumulador + productoActual.quantity,
 			0,
 		);
 
     // esto es para enviar la compra a Firebase
-     //const [amountItems, setAmountItems] = useState(0);
-     // const sendOrder = (() => {
-     //     const db = getFirestore();
-     //     const orderCollection = collection(db,'orders')
-     //     const order = {
-     //         item: cartItems,
-     //     };
-     //     addDoc(orderCollection, order).then((res)=> console.log(res.id)).catch((err)=> console.log('error', err));
-     // })
+    //  const [amountItems, setAmountItems] = useState(0);
+     const sendOrder = (() => {
+           const db = getFirestore();
+           const orderCollection = collection(db,'orders')
+          
+           const order = { item: cartItems};
+      
+           addDoc(orderCollection, order)
+           .then((res)=> console.log(res.id))
+           .catch((err)=> console.log('error', err));
+       })
  
 
     // Viciarmos el carrito
@@ -76,8 +75,8 @@ const CartProvider = ({children}) => {
             removeItem,
             addProduct,
             PrecioTotal,
-            totalProducts
-            //addItem
+            ProductosTotalWidget,
+            //sendOrder
         }}>
               {children}
           </CartContext.Provider>

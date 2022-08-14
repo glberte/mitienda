@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 import Card from 'react-bootstrap/Card';
+import {addDoc, getFirestore, collection } from "firebase/firestore";
 
 const Cart = () => {
     const {cartItems, PrecioTotal, removeItem, clearCart} = useContext(CartContext);
@@ -16,6 +17,31 @@ const Cart = () => {
         //      setTotalPrice(total);
         //  },[cartItems]);
 
+        const order = {
+            user:{fullname:"Gabriel Bertellotti", email:"gabiberte@gmail.com"},
+            items: cartItems.map((item)=> ({
+                id: item.id,
+                name: item.name,
+                quantity: item.quantity
+            })),
+            total: PrecioTotal(),
+        };
+        // const handleClick = ()=> {
+        //     console.log(order)
+        //     const db = getFirestore();
+        //     const ordersCollection = collection(db, "orders");
+        //     addDoc(ordersCollection, order)
+        //     .then(({id})=> console.log(id));
+        // };
+        const EnviarOrden = () => {
+            console.log(order)
+            const db = getFirestore();
+            const ordersCollection = collection(db, "orders");
+            addDoc(ordersCollection, order).then(({ id }) => console.log(id));
+        };
+        
+
+      
         if(cartItems.length === 0){
             return(
                 <div>
@@ -51,9 +77,14 @@ const Cart = () => {
                     
                 ))} 
                 <><h3>el total de la compra es $ {PrecioTotal()}</h3> </>
-                    <button type="button" title="Eliminar Item" className="btn btn-primary py-1"
+                    <button type="button" title="Limpiar Carrito" className="btn btn-primary py-1"
                     onClick={()=> clearCart()}>
                         Vaciar Carrito
+                    </button>
+
+                    <button type="button" title="Finalizar Compra" className="btn btn-success py-1"
+                    onClick={EnviarOrden}>
+                        Finalizar Compra
                     </button>
 
         
