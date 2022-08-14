@@ -35,10 +35,10 @@ const CartProvider = ({children}) => {
      console.log('newcarrito: ', cartItems);
 
 
-     const removeItem = (codigo) => {
+     const removeUnItem = (codigo) => {
          return setCartItems(cartItems.filter(e => e.item.codigo !== codigo))
      }
-     const removeProduct = (id) => setCartItems (cartItems.filter(item => item.id !== id));
+     const removeItem = (id) => setCartItems (cartItems.filter(item => item.id !== id));
 
     // Ver precio total
     const PrecioTotal = () => {
@@ -74,7 +74,6 @@ const CartProvider = ({children}) => {
             setCartItems, 
             clearCart,
             removeItem,
-            removeProduct,
             addProduct,
             PrecioTotal,
             totalProducts

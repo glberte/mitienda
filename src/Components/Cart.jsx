@@ -31,7 +31,8 @@ const Cart = () => {
         <> 
             <h2> Su carrito tiene: </h2> 
                 {cartItems.map((item) => ( 
-                    <div className=" card p1 m-auto" key ={item.id}>
+                    //  <div className=" card p1 m-auto" key ={item.id}>
+                    <div className=" card p1 m-auto">
                         <div>
                         <h3>{item.name}</h3>
                         <h4>Precio: {item.price} </h4>
@@ -42,7 +43,7 @@ const Cart = () => {
 
                         </div>
                          <button onClick={()=> 
-                            removeItem(item.codigo)
+                            removeItem(item.id)
                             //</div>console.log(item.codigo)
                             // ()=>removeItem(item.id)
                             }>Quitar Producto</button>
