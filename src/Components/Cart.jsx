@@ -6,9 +6,9 @@ import Card from 'react-bootstrap/Card';
 import {addDoc, getFirestore, collection } from "firebase/firestore";
 
 const Cart = () => {
-    const {cartItems, PrecioTotal, removeItem, clearCart} = useContext(CartContext);
+    const {cartItems, PrecioTotal,removeUnItem,removeItem, clearCart} = useContext(CartContext);
     
-    const [totalPrice, setTotalPrice] = useState(0);
+    //const [totalPrice, setTotalPrice] = useState(0);
     //console.log(cartItems);
         //  useEffect(()=> {
         //      let total= 0;
@@ -58,7 +58,7 @@ const Cart = () => {
             <h2> Su carrito tiene: </h2> 
                 {cartItems.map((item) => ( 
                     //  <div className=" card p1 m-auto" key ={item.id}>
-                    <div className=" card p1 m-auto">
+                    <div className=" card p1 m-auto" key={item.id}>
                         <div>
                         <h3>{item.name}</h3>
                         <h4>Precio: {item.price} </h4>
@@ -68,11 +68,13 @@ const Cart = () => {
                         <p>Subtotal: ${item.quantity * item.price}</p>
 
                         </div>
-                         <button onClick={()=> 
-                            removeItem(item.id)
+                         <button onClick={(item)=> 
+                            removeUnItem(item.quantity)
+                            //removeItem(item.id)
                             //</div>console.log(item.codigo)
                             // ()=>removeItem(item.id)
-                            }>Quitar Producto</button>
+                            //console.log()
+                            }>Quitar Producto</button>                            
                     </div>
                     
                 ))} 

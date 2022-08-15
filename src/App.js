@@ -3,14 +3,14 @@ import './App.css';
 import NavBar from './Components/Nav';
 import ItemListContainer from './Components/ItemListContainer';
 import { BrowserRouter, Route, Routes, Link } from'react-router-dom';
-import Item from './Components/Item';
 import Formulario from './ejercicioClases/Formulario';
 import Intercambialidad from './ejercicioClases/Intercambialidad';
 import ItemDetailContainer from './Components/ItemDetailContainer';
 import CartProvider from './Context/CartContext';
-import BarraFiltros from './Components/Filter';
 import React, { useState } from 'react';
 import Cart from './Components/Cart';
+import CheckOutOrder from './Components/CheckOut';
+
 
 function App() {
   const[ amountItems, setAmountItems] = useState(0);
@@ -28,6 +28,7 @@ function App() {
             <Route path="/category/:name" element={<ItemListContainer/>} />
             <Route path='item/:id' element={<ItemDetailContainer setAmountItems={setAmountItems}/>} />
             <Route path='/cart' element={<Cart/>} />
+            <Route path='/checkout' element={<CheckOutOrder/>} />
 
             <Route path="*"  element={<div> No se encuentra el detalle del Producto</div>}/>
           </Routes>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const order = {
+const CheckOutOrder = {
     //creamos el objeto a enviar con formulario
     comprador: {
         name: "Gabriel",
@@ -10,3 +10,5 @@ const order = {
     },
     product: "item"
 }
+
+export default CheckOutOrder;

@@ -23,18 +23,17 @@ const CartProvider = ({children}) => {
 		} else {
 			setCartItems([...cartItems, { ...item, quantity }]);
 		}
+        console.log(item.id);
 	};
+    const isInCart = (id) => 
+		cartItems.find((item) => item.id === id) ? true : false;
 
-      const isInCart = (id) => {
-          return cartItems.find ((item)=> item.id === id)
-      }
+    //   const isInCart = (id) => {
+    //       return cartItems.find (item=> item.id === id ? true : false);
+    //     }
     
-     console.log('newcarrito: ', cartItems);
+     console.log('Items en cartItems: ', cartItems);
 
-
-    //  const removeUnItem = (codigo) => {
-    //      return setCartItems(cartItems.filter(e => e.item.codigo !== codigo))
-    //  }
      const removeItem = (id) => setCartItems (cartItems.filter(item => item.id !== id));
 
     // Ver precio total
@@ -43,10 +42,10 @@ const CartProvider = ({children}) => {
     }
 
     const ProductosTotalWidget = () =>
-		cartItems.reduce(
-			(acumulador, productoActual) => acumulador + productoActual.quantity,
-			0,
-		);
+    	cartItems.reduce(
+    		(acumulador, productoActual) => acumulador + productoActual.quantity,
+    		0,
+    	);
 
     // esto es para enviar la compra a Firebase
     //  const [amountItems, setAmountItems] = useState(0);
@@ -62,7 +61,7 @@ const CartProvider = ({children}) => {
        })
  
 
-    // Viciarmos el carrito
+    // Vaciamos el carrito
      const clearCart = (item) => {
          setCartItems([]);
      }
@@ -73,6 +72,7 @@ const CartProvider = ({children}) => {
             setCartItems, 
             clearCart,
             removeItem,
+            // removeUnItem,
             addProduct,
             PrecioTotal,
             ProductosTotalWidget,

@@ -68,6 +68,7 @@ import ItemCount2 from "../ejercicioClases/itemCount2";
                                <button className="btn btn-outline-primary"> Ver más Productos
                                </button>
                              </Link>
+                             <p> o </p>
 
                              <Link to={"/cart"}>
                                <button className="btn btn-outline-dark">
