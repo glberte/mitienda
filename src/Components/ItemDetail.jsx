@@ -19,7 +19,6 @@ import ItemCount2 from "../ejercicioClases/itemCount2";
    //console.log(item);
   
    const onAdd = (quantity) => {
-     
       setQuantity(quantity);
       console.log(quantity);
       addProduct(item, quantity)

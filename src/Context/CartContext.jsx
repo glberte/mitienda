@@ -53,11 +53,11 @@ const CartProvider = ({children}) => {
            const db = getFirestore();
            const orderCollection = collection(db,'orders')
           
-           const order = { item: cartItems};
+            const order = { items: cartItems};
       
            addDoc(orderCollection, order)
-           .then((res)=> console.log(res.id))
-           .catch((err)=> console.log('error', err));
+           .then(res=> console.log(res.id))
+           .catch(err=> console.log('error', err));
        })
  
 
@@ -76,7 +76,7 @@ const CartProvider = ({children}) => {
             addProduct,
             PrecioTotal,
             ProductosTotalWidget,
-            //sendOrder
+            sendOrder
         }}>
               {children}
           </CartContext.Provider>

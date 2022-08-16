@@ -52,6 +52,8 @@ const Cart = () => {
                 </div>
             )
         }
+        
+    
 
     return ( 
         <> 

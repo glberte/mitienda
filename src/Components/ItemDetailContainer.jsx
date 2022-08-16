@@ -11,15 +11,15 @@ const ItemDetailContainer = ({setAmountItems}) => {
     const [item, setItems] = useState({});
     const {id} = useParams();
 
-        const db = getFirestore(); 
-        const docRef = doc(db, "items", id);
-        
-        useEffect( ()=> {
+    useEffect( ()=> {
+            const db = getFirestore(); 
+            const docRef = doc(db, "items", id);
+            
             getDoc(docRef).then((snapshot)=> {
-                const data = {id: snapshot.id, ...snapshot.data()};
-                //console.log(snapshot.data());
-                setItems(snapshot.data())
-             },[]);
+                // const data = {id: snapshot.id, ...snapshot.data()};
+                setItems({...snapshot.data(), id: snapshot.id});
+                //console.log(snapshot.data(), id);
+             },[id]);
 
         });
     
