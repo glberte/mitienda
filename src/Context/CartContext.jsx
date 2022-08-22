@@ -25,8 +25,7 @@ const CartProvider = ({children}) => {
 		}
         console.log(item.id);
 	};
-    const isInCart = (id) => 
-		cartItems.find((item) => item.id === id) ? true : false;
+    const isInCart = (id) => cartItems.find((item) => item.id === id) ? true : false;
 
     //   const isInCart = (id) => {
     //       return cartItems.find (item=> item.id === id ? true : false);
@@ -34,7 +33,35 @@ const CartProvider = ({children}) => {
     
      console.log('Items en cartItems: ', cartItems);
 
-     const removeItem = (id) => setCartItems (cartItems.filter(item => item.id !== id));
+    // const removeItem = (id) => setCartItems(cartItems.filter(item => item.id !== id));
+    
+    // REMOVER ITEM
+    const removeItem = (item)=> {
+    const productExist = cartItems.find((item) => item.id === item.id);
+        if (productExist.quantity === 1) {
+			setCartItems(
+				cartItems.filter((item) => item.id !== item.id));
+		} else {
+			setCartItems(
+                cartItems.map((item) => 
+                item.id === item.id 
+            ? {...productExist, quantity: productExist.quantity -1}
+            : item)
+            );
+            console.log('exite: ', productExist);
+		}console.log(cartItems)
+	};
+    
+
+    // REMOVER ITEM DESDE PROP.CODIGO
+    // const removeItem = (item) => { 
+    //  const prevCartItems = [...cartItems]
+    //  const iQuantity = prevCartItems.find( i => i.item.codigo === item.codigo).quantity
+    //  if (iQuantity > 1) {
+    //      prevCartItems.find( i => i.item.codigo === item.codigo).quantity -=1
+    //      setCartItems (prevCartItems);
+    //  }
+    //  }
 
     // Ver precio total
     const PrecioTotal = () => {
@@ -72,7 +99,6 @@ const CartProvider = ({children}) => {
             setCartItems, 
             clearCart,
             removeItem,
-            // removeUnItem,
             addProduct,
             PrecioTotal,
             ProductosTotalWidget,

@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 import Card from 'react-bootstrap/Card';
 import {addDoc, getFirestore, collection } from "firebase/firestore";
+import { Alert } from "bootstrap";
 
 const Cart = () => {
-    const {cartItems, PrecioTotal,removeUnItem,removeItem, clearCart} = useContext(CartContext);
+    const {cartItems, PrecioTotal,removeUnItem,removeItem, sendOrder, clearCart} = useContext(CartContext);
     
     //const [totalPrice, setTotalPrice] = useState(0);
     //console.log(cartItems);
@@ -37,7 +38,7 @@ const Cart = () => {
             console.log(order)
             const db = getFirestore();
             const ordersCollection = collection(db, "orders");
-            addDoc(ordersCollection, order).then(({ id }) => console.log(id));
+            addDoc(ordersCollection, order).then(({ id }) => alert(id));
         };
         
 
@@ -59,7 +60,6 @@ const Cart = () => {
         <> 
             <h2> Su carrito tiene: </h2> 
                 {cartItems.map((item) => ( 
-                    //  <div className=" card p1 m-auto" key ={item.id}>
                     <div className=" card p1 m-auto" key={item.id}>
                         <div>
                         <h3>{item.name}</h3>
@@ -71,12 +71,9 @@ const Cart = () => {
 
                         </div>
                          <button onClick={(item)=> 
-                            removeUnItem(item.quantity)
-                            //removeItem(item.id)
-                            //</div>console.log(item.codigo)
-                            // ()=>removeItem(item.id)
-                            //console.log()
-                            }>Quitar Producto</button>                            
+                            //removeUnItem(item.quantity)
+                            removeItem(item.quantity)}>Quitar Producto
+                            </button>                            
                     </div>
                     
                 ))} 
