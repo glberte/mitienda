@@ -13,15 +13,13 @@ const CartProvider = ({children}) => {
      
      const addProduct = (item, quantity) => {
 		if (isInCart(item.id)) {
-			setCartItems(
-				cartItems.map((item) => {
+			setCartItems(cartItems.map((item) => {
 					return item.id === item.id
 						? { ...item, quantity: item.quantity + quantity }
 						: item;
 				}),
 			);
-		} else {
-			setCartItems([...cartItems, { ...item, quantity }]);
+		} else { setCartItems([...cartItems, { ...item, quantity }]);
 		}
         console.log(item.id);
 	};
@@ -77,14 +75,15 @@ const CartProvider = ({children}) => {
     // esto es para enviar la compra a Firebase
     //  const [amountItems, setAmountItems] = useState(0);
      const sendOrder = (() => {
-           const db = getFirestore();
-           const orderCollection = collection(db,'orders')
-          
-            const order = { items: cartItems};
+        const db = getFirestore();
+        const orderCollection = collection(db,'orders')
+        const order = { items: cartItems};
+        const hoy = new Date();
+        const compra = hoy.toLocaleDateString("es-ES");
       
            addDoc(orderCollection, order)
            .then(res=> console.log(res.id))
-           .catch(err=> console.log('error', err));
+           .catch(err=> console.log('Hubo un error, contacta a soporte', err));
        })
  
 
